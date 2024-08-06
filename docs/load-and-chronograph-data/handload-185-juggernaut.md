@@ -18,7 +18,7 @@ Testing performed at 200 yards with 0 minutes of windage.
 | VihtaVuori N150 | Magtech Small Rifle | Lapua Palma SR (LPT03781) | 2.8430          | 2.1765          |
 
 #### Graph 
-<iframe width="100%" height="676" seamless frameborder="0" scrolling="yes" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTFMKHhDcDzsQDlmwa-mD2elzSC--_cCadlnEzu8eoXY7zuA92of0Jw13v45P6yEjE0R_zFsyBwk0qw/pubchart?oid=931640145&amp;format=interactive"></iframe>
+<iframe width="1095px" height="676" allowfullscreen seamless frameborder="0" scrolling="yes" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTFMKHhDcDzsQDlmwa-mD2elzSC--_cCadlnEzu8eoXY7zuA92of0Jw13v45P6yEjE0R_zFsyBwk0qw/pubchart?oid=931640145&amp;format=interactive"></iframe>
 
 
 #### Raw data

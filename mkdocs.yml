@@ -10,6 +10,9 @@ repo_url: https://github.com/dsgnr/reloading-book
 # Copyright
 copyright: Copyright &copy; <script>document.write(new Date().getFullYear())</script>
 
+extra_css:
+  - static/css/custom.css
+
 # Configuration
 theme:
   name: material
