@@ -1,0 +1,8 @@
+.md-grid {
+    max-width: 75%;
+}
+
+.md-nav, .md-typeset {
+    font-size: .7rem;
+    line-height: 1.2;
+}
