@@ -1,1 +1,0 @@
-# Dolphin FTR Rifle
