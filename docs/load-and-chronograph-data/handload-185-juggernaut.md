@@ -79,3 +79,7 @@ Goal is for projectile to be above transonic speeds (1340-890fps) at 1000 yards 
 The estimates below will sill not yield the FPS I am looking for. We'll likely be lower than this with the chronograph based on our average of 30fps less from initial testing.
 
 ![](../static/img/estimated-velocity-ladder-308-185-jugg.svg)
+
+### Ladder testing - actual results
+
+<iframe width="1095px" height="676" allowfullscreen seamless frameborder="0" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTFMKHhDcDzsQDlmwa-mD2elzSC--_cCadlnEzu8eoXY7zuA92of0Jw13v45P6yEjE0R_zFsyBwk0qw/pubchart?oid=2062122451&format=interactive"></iframe>
