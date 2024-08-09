@@ -1,9 +1,17 @@
 # Hand load 185gr Juggernaut
 
-#### Summary
+### Summary
 Initial load testing of 185gr Berger Juggernauts with VihtaVuori N150. Used VihtaVuori reloading data
 https://www.vihtavuori.com/reloading-data/rifle-reloading/?cartridge=30 to sample. 
 
+This is a new powder for me, so testing low charge weights initially to see how it groups.
+
+
+### Initial Load
+
+| **Powder**      | **Primer**          |         **Brass**         | **COAL (inch)** | **CBTO (inch)** | **Start Charge (gr)** | **End Charge (gr)** |
+|-----------------|---------------------|:-------------------------:|-----------------|-----------------|-----------------------|---------------------|
+| VihtaVuori N150 | Magtech Small Rifle | Lapua Palma SR (LPT03781) | 2.8430          | 2.1765          | 37.5                  | 41                  |
 
 **Special notes:** The COAL below is greater than VVihtaVuori's load data of 2.795". Max charge from VihtaVuori data is 40.6gr, but I tested to 41gr.
 
@@ -11,17 +19,17 @@ There were no pressure signs observed, and there is still plenty of case capacit
 
 Testing performed at 200 yards with 0 minutes of windage.
 
-#### Load
 
-| **Powder**      | **Primer**          | **Brass**                 | **COAL (inch)** | **CBTO (inch)** |
-|-----------------|---------------------|---------------------------|-----------------|-----------------|
-| VihtaVuori N150 | Magtech Small Rifle | Lapua Palma SR (LPT03781) | 2.8430          | 2.1765          |
+### Estimates of initial charges using Gordons Reloading Tool
 
-#### Graph 
+![](../../static/img/estimated-velocity-initial-308-185-jugg.svg)
+
+
+### Initial charges - actual results 
 <iframe width="1095px" height="676" allowfullscreen seamless frameborder="0" scrolling="yes" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTFMKHhDcDzsQDlmwa-mD2elzSC--_cCadlnEzu8eoXY7zuA92of0Jw13v45P6yEjE0R_zFsyBwk0qw/pubchart?oid=931640145&amp;format=interactive"></iframe>
 
 
-#### Raw data
+### Raw data
 
 | **Charge Weight (gr)** | **Shot 1** | **Shot 2** | **Shot 3** | **Shot 4** | **Shot 5** | **Average (FPS)** | **Extreme Spread (FPS)** | **Standard Deviation** | **Group (MOA)** |
 |------------------------|------------|------------|------------|------------|------------|-------------------|--------------------------|------------------------|-----------------|
@@ -38,3 +46,36 @@ Testing performed at 200 yards with 0 minutes of windage.
 | 40.6                   | 2531.4     | 2525.5     | 2513.5     | 2538.9     | 2534.6     | 2528.8            | 25.4                     | 9.8                    | 0.59            |
 | 40.8                   | 2531.7     | 2534.6     | 2531.1     | 2540.7     | 2536.1     | 2534.8            | 9.6                      | 3.9                    | 0.46            |
 | 41                     | 2529.2     | 2563.2     | 2550.5     | 2550.1     | 2554.2     | 2549.4            | 34.0                     | 12.5                   | 0.54            |
+
+Initial load testing grouped well, with some low SD/ES numbers in places. Comparing to Gordons Reloading Tool, real numbers appear to be ~30fps slower on average. Velocity is not high enough for me to be happy at 1000 yards, so will next perform a single shot ladder test to determine velocity nodes and max pressure.
+
+### Berger example ballistics data
+
+|    **Bullet Diameter**    | 0.308 inches |    **Zero Range**   |    100 yards   |
+|:-------------------------:|:------------:|:-------------------:|:--------------:|
+|     **Bullet Weight**     |  185 grains  |   **Sight Height**  |     1.50 in    |
+| **Ballistic Coefficient** |     0.284    | **Muzzle Velocity** |    2750 fps    |
+|      **Temperature**      |     59 F     |    **Wind Speed**   |    0.00 mph    |
+|        **Altitude**       |    0 feet    |  **Wind Direction** |    9 o'clock   |
+|      **Inclination**      |   0 degrees  |  **Berger Bullets** | Copyright 2013 |
+
+| **Range (y)** | **Velocity (fps)** | **Energy (ft-lbs)** | **Elevation (moa)** | **Windage (moa)** | **TOF (s)** |
+|:-------------:|:------------------:|:-------------------:|:-------------------:|:-----------------:|:-----------:|
+| 100           | 2588               | 2752                | -0.00               | 0.00              | 0.11        |
+| 200           | 2432               | 2430                | -1.76               | 0.00              | 0.23        |
+| 300           | 2281               | 2138                | -4.22               | 0.00              | 0.36        |
+| 400           | 2136               | 1874                | -7.05               | 0.00              | 0.49        |
+| 500           | 1996               | 1637                | -10.21              | 0.00              | 0.64        |
+| 600           | 1861               | 1423                | -13.70              | 0.00              | 0.79        |
+| 700           | 1730               | 1230                | -17.57              | 0.00              | 0.96        |
+| 800           | 1604               | 1057                | -21.85              | 0.00              | 1.14        |
+| 900           | 1482               | 902                 | -26.62              | 0.00              | 1.33        |
+| 1000          | 1365               | 765                 | -31.95              | 0.00              | 1.54        |
+
+Goal is for projectile to be above transonic speeds (1340-890fps) at 1000 yards for the best chance of a good group.
+
+### Estimates of ladder charges using Gordons Reloading Tool
+
+The estimates below will sill not yield the FPS I am looking for. We'll likely be lower than this with the chronograph based on our average of 30fps less from initial testing.
+
+![](../../static/img/estimated-velocity-ladder-308-185-jugg.svg)
