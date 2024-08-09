@@ -22,7 +22,7 @@ Testing performed at 200 yards with 0 minutes of windage.
 
 ### Estimates of initial charges using Gordons Reloading Tool
 
-![](/static/img/estimated-velocity-initial-308-185-jugg.svg)
+![](../static/img/estimated-velocity-initial-308-185-jugg.svg)
 
 
 ### Initial charges - actual results 
@@ -78,4 +78,4 @@ Goal is for projectile to be above transonic speeds (1340-890fps) at 1000 yards 
 
 The estimates below will sill not yield the FPS I am looking for. We'll likely be lower than this with the chronograph based on our average of 30fps less from initial testing.
 
-![](/static/img/estimated-velocity-ladder-308-185-jugg.svg)
+![](../static/img/estimated-velocity-ladder-308-185-jugg.svg)
