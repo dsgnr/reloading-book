@@ -13,7 +13,7 @@ This is a new powder for me, so testing low charge weights initially to see how 
 |-----------------|---------------------|:-------------------------:|-----------------|-----------------|-----------------------|---------------------|
 | VihtaVuori N150 | Magtech Small Rifle | Lapua Palma SR (LPT03781) | 2.8430          | 2.1765          | 37.5                  | 41                  |
 
-**Special notes:** The COAL below is greater than VVihtaVuori's load data of 2.795". Max charge from VihtaVuori data is 40.6gr, but I tested to 41gr.
+**Special notes:** The COAL below is greater than VihtaVuori's load data of 2.795". Max charge from VihtaVuori data is 40.6gr, but I tested to 41gr.
 
 There were no pressure signs observed, and there is still plenty of case capacity. More testing is needed since velocity is not where I'd like (looking for ~2750fps or greater).
 
@@ -83,3 +83,46 @@ The estimates below will sill not yield the FPS I am looking for. We'll likely b
 ### Ladder testing - actual results
 
 <iframe width="1095px" height="676" allowfullscreen seamless frameborder="0" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTFMKHhDcDzsQDlmwa-mD2elzSC--_cCadlnEzu8eoXY7zuA92of0Jw13v45P6yEjE0R_zFsyBwk0qw/pubchart?oid=2062122451&format=interactive"></iframe>
+
+### Ladder testing - raw data
+
+The VihtaVuori load data appears to be quite conservative maxing out at 40.6 which averages 2530fps. This doesn't yield enough velocity for FTR shooting for me to be comfortable. I decided to seat the bullet longer (ogive 0.005" off the lands) which allows for much more case fill.
+
+I ran all the way up to 44.4gr excepting to see pressure signs before then. There was a small amount of room left in the case - I do not want to compress loads. 
+
+No pressure signs were observed throughout all the testing, surprisingly. Ambient temperature was ~28°C with two minutes of pause left between each round.
+
+| **Charge Weight (gr)** | **Velocity (FPS)** |
+|------------------------|--------------------|
+|                   37.5 |             2395.2 |
+|                   37.8 |             2375.2 |
+|                   38.1 |             2426.4 |
+|                   38.4 |             2461.5 |
+|                   38.7 |             2444.5 |
+|                   39.0 |             2499.6 |
+|                   39.3 |             2516.3 |
+|                   39.6 |             2520.3 |
+|                   39.9 |             2538.7 |
+|                   40.2 |             2544.6 |
+|                   40.5 |             2550.4 |
+|                   40.8 |             2568.0 |
+|                   41.1 |             2584.3 |
+|                   41.4 |             2580.6 |
+|                   41.7 |             2590.2 |
+|                   42.0 |             2619.3 |
+|                   42.3 |             2615.1 |
+|                   42.6 |             2634.8 |
+|                   42.9 |             2645.9 |
+|                   43.2 |             2688.1 |
+|                   43.5 |             2691.7 |
+|                   43.8 |             2707.0 |
+|                   44.1 |             2723.0 |
+|                   44.4 |             2741.2 |
+
+All shots were aimed at dead centre with no modifications or allowances made to elevation or windage throughout.
+
+![](../static/img/ladder_charge_shotview.png)
+
+Showing cases after firing. No pressure signs were observed throughout this test. Cases and primers look same all the way through from lowest to highest charge.
+
+![](../static/img/powder_charge_ladder_case_view.jpg)
