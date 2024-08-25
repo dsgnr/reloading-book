@@ -126,3 +126,32 @@ All shots were aimed at dead centre with no modifications or allowances made to 
 Showing cases after firing. No pressure signs were observed throughout this test. Cases and primers look same all the way through from lowest to highest charge.
 
 ![](../static/img/powder_charge_ladder_case_view.jpg)
+
+### Final charges - actual results
+
+<iframe width="1095px" height="676" allowfullscreen seamless frameborder="0" scrolling="yes" src="https://docs.google.com/spreadsheets/d/1EIFL3sjQG2u4RIoVZ40C5YfDsK5RfOSZLNslx3T83dI/pubchart?oid=1460961615&format=interactive"></iframe>
+
+
+### Final charges - raw data
+
+During this range trip, I loaded 10 rounds of 44.1gr, 44.4gr, 44.6gr and 44.8gr. No pressure signs were observed again. These strings were shot at 200 yards again. All shots were aimed dead centre target, with no allowances made for wind. This trip had wind gusts of up to 20mph.
+
+| **Charge Weight (gr)** | **Shot 1** | **Shot 2** | **Shot 3** | **Shot 4** | **Shot 5** | **Shot 6** | **Shot 7** | **Shot 8** | **Shot 9** | **Shot 10** | **Average (FPS)** | **Extreme Spread (FPS)** | **Standard Deviation** | **Group (MOA)** |
+|------------------------|------------|------------|------------|------------|------------|------------|------------|------------|------------|-------------|-------------------|--------------------------|------------------------|-----------------|
+|                   44.1 |     2725.6 |     2716.1 |     2725.4 |     2713.9 |     2721.2 |     2713.2 |     2718.6 |     2717.3 |     2716.6 |      2715.8 |            2718.4 |                     12.4 |                    4.4 |            0.62 |
+|                   44.4 |     2733.9 |     2733.3 |     2739.2 |     2738.5 |     2740.6 |     2736.7 |     2737.6 |     2733.8 |     2740.6 |      2733.8 |            2736.8 |                      7.3 |                    2.9 |            0.62 |
+|                   44.6 |       2745 |     2751.2 |     2755.4 |     2754.6 |     2757.8 |     2749.2 |     2747.4 |     2746.3 |     2753.6 |      2746.1 |            2750.7 |                     12.8 |                    4.5 |            0.59 |
+|                   44.8 |     2766.3 |     2768.2 |       2776 |     2758.7 |     2780.5 |     2765.3 |     2754.9 |       2776 |     2783.1 |      2781.7 |            2771.1 |                     28.2 |                    9.9 |            0.85 |
+
+
+
+44.1 grains. 0.62 MOA group. Unfortunately, I didn't grab a screenshot of this.
+
+![](../static/img/ladder_charge_shotview_44-4.png)
+44.4 grains. 0.62 MOA group
+
+![](../static/img/ladder_charge_shotview_44-6.png)
+44.6 grains. 0.59 MOA group
+
+![](../static/img/ladder_charge_shotview_44-8.png)
+44.8 grains. 0.85 MOA group
