@@ -132,7 +132,7 @@ Showing cases after firing. No pressure signs were observed throughout this test
 <iframe width="1095px" height="676" allowfullscreen seamless frameborder="0" scrolling="yes" src="https://docs.google.com/spreadsheets/d/1EIFL3sjQG2u4RIoVZ40C5YfDsK5RfOSZLNslx3T83dI/pubchart?oid=1460961615&format=interactive"></iframe>
 
 
-### Final charges - raw data
+### 10 shot tests - raw data
 
 During this range trip, I loaded 10 rounds of 44.1gr, 44.4gr, 44.6gr and 44.8gr. No pressure signs were observed again. These strings were shot at 200 yards again. All shots were aimed dead centre target, with no allowances made for wind. This trip had wind gusts of up to 20mph.
 
@@ -155,3 +155,40 @@ During this range trip, I loaded 10 rounds of 44.1gr, 44.4gr, 44.6gr and 44.8gr.
 
 ![](../static/img/ladder_charge_shotview_44-8.png)
 44.8 grains. 0.85 MOA group
+
+### Max Pressure testing
+
+I wanted to see how much more velocity I could achieve here. I wasn't far off max case fill, so I pushed it till I saw pressure signs, without compressing the powder.
+
+I recently changed my bipod to a Seb Joypod-X, which gives me a much better, stable position. I wanted to discount some of the movement in my previous tests to poor positioning.
+
+As previous, these were aimed dead centre, and not making any allowance for wind.
+
+| **Charge Weight (gr)** | **Shot 1** | **Shot 2** | **Shot 3** | **Average (FPS)** | **Extreme Spread (FPS)** | **Standard Deviation** | **Group (MOA)** |
+|------------------------|------------|------------|------------|-------------------|--------------------------|------------------------|-----------------|
+| 44.6                   | 2757.3     | 2755.5     | 2748.4     | 2753.7            | 8.9                      | 3.8                    | 0.19            |
+| 44.8                   | 2770.4     | 2779       | 2753.3     | 2767.5            | 25.7                     | 10.6                   | 0.33            |
+| 45                     | 2782.2     | 2779.2     | 2778.7     | 2780              | 3.5                      | 1.5                    | 0.24            |
+| 45.2                   | 2797.5     | 2797.4     | 2792.3     | 2795.7            | 5.2                      |  2.4                   | 0.3             |
+| 45.4                   | 2800.1     | 2809.3     | 2810.7     | 2806.7            | 10.6                     | 4.7                    | 0.74            |
+
+I received a heavy bolt on 45.4 grains and it grouped terribly even in just these three shots.
+
+44.6 grains still looks like a good contender, but 45 grains also looks like it should receive some more testing with its group not being much more than 44.6, but also receiving a better SD and ES.
+
+![](../static/img/ladder_charge_shotview_44-6-second.jpeg)
+44.6 grains. 0.19 MOA group
+
+![](../static/img/ladder_charge_shotview_44-8-second.jpeg)
+44.8 grains. 0.33 MOA group
+
+![](../static/img/ladder_charge_shotview_45-second.jpeg)
+45 grains. 0.24 MOA group
+
+![](../static/img/ladder_charge_shotview_45-2-second.jpeg)
+45.2 grains. 0.3 MOA group
+
+![](../static/img/ladder_charge_shotview_45-4-second.jpeg)
+45.4 grains. 0.74 MOA group
+
+I'll load up 10-15 rounds of 44.6 and 45 grains to do a better assessment.
