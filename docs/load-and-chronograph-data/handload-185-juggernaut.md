@@ -192,3 +192,13 @@ I received a heavy bolt on 45.4 grains and it grouped terribly even in just thes
 45.4 grains. 0.74 MOA group
 
 I'll load up 10-15 rounds of 44.6 and 45 grains to do a better assessment.
+
+### Match results
+
+Using 44.6gr seems to be a really nice load for up to 600 yards. I won the FTR 300 yard match at the Imperial Meeting 2025:
+
+![](../static/img/185-juggernaut-imperial-2025-300yd.jpg)
+
+Also club match out to 600 yards yielded a 50.6:
+![](../static/img/185-juggernaut-sep-2025-600yd-1.jpg)
+![](../static/img/185-juggernaut-sep-2025-600yd-2.jpg)
