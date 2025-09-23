@@ -84,3 +84,22 @@ No pressure signs were observed throughout all the testing, surprisingly. Ambien
 
 
 No pressure signs were observed throughout this test. Cases and primers look same all the way through from lowest to highest charge.
+
+
+### Group Testing
+
+Not entirely happy with the results here. I was only able to shoot at 300 yards for this test, which differs from all other testing I've performed so far.
+
+43.2, 43.5 and 43.8 show promise with all being said. Ignoring windage, the vertical spread for each was ~0.5 MOA. These also had a reasonable SD/ES.
+
+<iframe width="1095px" height="676" allowfullscreen seamless frameborder="0" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRMQQMq2Z1Vnpw8L14ASyUdTH2Mg3RY5isJb04UansY_0dInWEF8C0unQo-2xH7_WSB8jupgi4eXUsw/pubchart?oid=931640145&amp;format=interactive"></iframe>
+
+Will need to load some more of these and test at 200 yards (to keep it the same as my other tests).
+
+Will also look at smaller charge increments to see if I can squeeze some more out.
+
+These were seated at 2.2690" CBTO (0.020" off the lands).
+
+This was only testing a single box of 100, so I'll buy a larger quantity since these look like they could shoot well.
+
+I'd definitely be looking to reach a 0.25 MOA grouping at 200 yards to be consistent with my 185gr rounds (these have proven to be a winner, since I have won some matches with these).
