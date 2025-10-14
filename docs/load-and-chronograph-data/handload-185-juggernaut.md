@@ -6,6 +6,7 @@ https://www.vihtavuori.com/reloading-data/rifle-reloading/?cartridge=30 to sampl
 
 This is a new powder for me, so testing low charge weights initially to see how it groups.
 
+#
 
 ### Initial Load
 
@@ -202,3 +203,46 @@ Using 44.6gr seems to be a really nice load for up to 600 yards. I won the FTR 3
 Also club match out to 600 yards yielded a 50.6:
 ![](../static/img/185-juggernaut-sep-2025-600yd-1.jpg)
 ![](../static/img/185-juggernaut-sep-2025-600yd-2.jpg)
+
+#
+### Once fired brass
+Initial testing of once fired brass. Bumped back .002" and still with a 2.2850" CBTO.
+
+I did have a two flyers througout this testing, so I will need to go back and verify. Since there were only two flyers, I have decided to discount these since they were way off.
+
+| **Charge Weight (gr)** | **Shot 1** | **Shot 2** | **Shot 3** | **Shot 4** | **Shot 5** | **Average (FPS)** | **Extreme Spread (FPS)** | **Standard Deviation** | **Group (MOA) (without flyers)** | **Group (MOA) (with flyers)** |
+|------------------------|------------|------------|------------|------------|------------|-------------------|--------------------------|------------------------|----------------------------------|-------------------------------|
+|                   43.8 |     2750.8 |     2738.1 |     2736.1 |     2735.3 |     2733.9 |            2738.8 |                     16.9 |                    6.9 |                             0.19 |                          0.41 |
+|                     44 |     2755.5 |     2746.3 |     2743.4 |       2742 |     2737.4 |            2744.9 |                     18.1 |                    6.7 |                              0.4 |                           0.4 |
+|                   44.2 |       2751 |       2761 |     2749.6 |       2749 |     2740.6 |            2750.2 |                     20.4 |                    7.3 |                             0.32 |                          0.32 |
+|                   44.4 |     2763.5 |     2759.4 |     2747.4 |     2767.1 |     2749.9 |            2757.5 |                     19.7 |                    8.5 |                             0.13 |                          0.43 |
+|                   44.6 |     2768.7 |     2771.4 |       2774 |     2764.4 |       2765 |            2768.7 |                      9.6 |                    4.1 |                             0.52 |                          0.52 |
+
+<iframe width="1095px" height="676" allowfullscreen seamless frameborder="0" scrolling="yes" src="https://docs.google.com/spreadsheets/d/1EIFL3sjQG2u4RIoVZ40C5YfDsK5RfOSZLNslx3T83dI/pubchart?oid=1460961615&format=interactive&headers=false"></iframe>
+
+Unfortunately, these groups were shot at 300 yards, instead of 200 yards. Therefore, it is difficult to get an accurate representation on any improvements.
+
+Average velocity appears to have increased ~20fps between new and once fired brass. My previous "winning" load was 44.6gr, and this now appears to be 44.4gr, based on group size, if I discount the flyer on this test. My previous best group with 44.6 was 0.59 MOA at 200 yards (1.2357"), and my new best so far is 0.13 MOA (0.4084"). Initially, this appears to be a drastic improvement!
+
+No pressure signs were observed throughout this test.
+
+#### Screenshots
+
+43.8gr showed promise, despite the flyer. Discounting this resulted in a sub quarter MOA group. Based on the vertical spread, I suspect the flyer to the left was the wind - keeping the same aim point at 300 yards will show this.
+![](../static/img/185_juggernaut_shotview_once_fired_43_8_with_flyer.png)
+![](../static/img/185_juggernaut_shotview_once_fired_43_8_without_flyer.png)
+
+44gr was ok, nothing great. A bit more vertical spread than I'd like.
+![](../static/img/185_juggernaut_shotview_once_fired_44.png)
+
+44.2gr an ok group. Nothing fantastic, but nothing to complain about here. Reasonable amount of vertical though.
+![](../static/img/185_juggernaut_shotview_once_fired_44_2.png)
+
+44.4gr was another good group - I suspect the flyer was the wind based on the elevation being relatively consistent. Both groups shown with and without the flyer below.
+![](../static/img/185_juggernaut_shotview_once_fired_44_4_with_flyer.png)
+![](../static/img/185_juggernaut_shotview_once_fired_44_4_without_flyer.png)
+
+44.6gr opened up a little on the vertical. Discounting shot 5, we'd be roughly quarter MOA.
+![](../static/img/185_juggernaut_shotview_once_fired_44_6.png)
+
+Based on this, the groups have definitely improved over new brass. Will need to repeat the tests again to get some extra validation. It would appear that my previous 44.4gr and 44.6gr charge weights can remain. I'd also like to work up to 45gr to see if the node continues.
