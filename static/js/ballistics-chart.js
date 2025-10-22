@@ -1,9 +1,7 @@
-// chartUtils.js
-
 // Common helpers
 function validateParams(params, requiredKeys = []) {
   const missing = requiredKeys.filter(key => !params[key]);
-  if (missing.length > 0) {
+  if (missing.length) {
     console.error(`Missing required parameters: ${missing.join(', ')}`);
     return false;
   }
@@ -23,12 +21,10 @@ function fetchCsvData({ csvUrl, onSuccess, onError }) {
 function getRange(arr, padding = 0.4) {
   const nums = arr.filter(v => typeof v === 'number' && !isNaN(v));
   if (!nums.length) return [0, 1];
-  const [min, max] = [Math.min(...nums), Math.max(...nums)];
+  const min = Math.min(...nums);
+  const max = Math.max(...nums);
   const pad = (max - min) * padding;
-  return [
-    Math.max(0, Math.floor(min - pad)),
-    Math.ceil(max + pad)
-  ];
+  return [Math.max(0, Math.floor(min - pad)), Math.ceil(max + pad)];
 }
 
 function linearRegression(x, y) {
@@ -43,49 +39,65 @@ function linearRegression(x, y) {
 }
 
 function getBaseLayout({ xKey, yKey, y2 = false, y2Range = [] }) {
-  return {
-    font: {
-      family: 'Roboto, sans-serif',
-      size: 12,
-      color: '#333'
-    },
+  const layout = {
+    font: { family: 'Roboto, sans-serif', size: 12, color: '#333' },
+    margin: { t: 30, b: 40, l: 60, r: y2 ? 60 : 40 },
+    legend: { x: 0, y: -0.3, xanchor: 'left', orientation: 'h', font: { color: '#333' } },
+    hovermode: 'x unified',
     xaxis: {
-      title: xKey,
+      title: { text: xKey },
       linecolor: '#333',
       tickfont: { color: '#333' },
-      titlefont: { color: '#333' }
+      titlefont: { color: '#333' },
+      tickmode: 'array'
     },
     yaxis: {
-      title: yKey,
+      title: { text: yKey },
       linecolor: '#333',
       tickfont: { color: '#333' },
       titlefont: { color: '#333' }
-    },
-    ...(y2 && {
-      yaxis2: {
-        title: 'SD / ES (FPS)',
-        overlaying: 'y',
-        side: 'right',
-        linecolor: 'rgba(0,0,0,0)',
-        zerolinecolor: 'rgba(0,0,0,0)',
-        showgrid: false,
-        range: y2Range,
-        tickfont: { color: '#333' },
-        titlefont: { color: '#333' }
-      }
-    }),
-    legend: {
-      x: 0,
-      y: -0.3,
-      xanchor: 'left',
-      orientation: 'h',
-      font: { color: '#333' },
-    },
-    margin: { t: 30, b: 40, l: 70, r: y2 ? 70 : 40 }
+    }
   };
+
+  if (y2) {
+    layout.yaxis2 = {
+      title: { text: 'SD / ES (FPS)' },
+      overlaying: 'y',
+      side: 'right',
+      linecolor: 'rgba(0,0,0,0)',
+      zerolinecolor: 'rgba(0,0,0,0)',
+      showgrid: false,
+      range: y2Range,
+      tickfont: { color: '#333' },
+      titlefont: { color: '#333' }
+    };
+  }
+
+  return layout;
 }
 
-// Render functions
+function createShotTraces(shotKeys, shotsData, xData) {
+  const shotColors = [
+    '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
+    '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'
+  ];
+
+  return shotsData.map((shotArr, i) => ({
+    x: xData,
+    y: shotArr,
+    mode: 'markers',
+    name: shotKeys[i],
+    marker: { color: shotColors[i % shotColors.length], symbol: 'x-thin-open', size: 6 },
+    yaxis: 'y1',
+    hoverinfo: 'x+y+name'
+  }));
+}
+
+// Helper to update tick info without overwriting axis titles etc.
+function updateXAxisTicks(layout, xData) {
+  layout.xaxis.tickvals = xData;
+  layout.xaxis.ticktext = xData.map(String);
+}
 
 function renderSimpleLineGraph({ csvUrl, chartId }) {
   if (!validateParams({ csvUrl, chartId }, ['csvUrl', 'chartId'])) return;
@@ -93,8 +105,7 @@ function renderSimpleLineGraph({ csvUrl, chartId }) {
   fetchCsvData({
     csvUrl,
     onSuccess: results => {
-      const data = results.data;
-      const headers = results.meta.fields;
+      const { data, meta: { fields: headers } } = results;
 
       if (headers.length < 2) {
         document.getElementById(chartId).innerHTML = '<p><strong>Error:</strong> CSV must contain at least two columns.</p>';
@@ -115,6 +126,7 @@ function renderSimpleLineGraph({ csvUrl, chartId }) {
       }));
 
       const layout = getBaseLayout({ xKey, yKey: yKeys[0] });
+      updateXAxisTicks(layout, xData);
 
       Plotly.newPlot(chartId, traces, layout, { displayModeBar: false });
     },
@@ -131,8 +143,7 @@ function renderBallisticsChart({ csvUrl, chartId }) {
   fetchCsvData({
     csvUrl,
     onSuccess: results => {
-      const data = results.data;
-      const headers = results.meta.fields;
+      const { data, meta: { fields: headers } } = results;
 
       const xKey = headers[0];
       const shotKeys = headers.filter(h => /^Shot \d+$/i.test(h));
@@ -155,20 +166,7 @@ function renderBallisticsChart({ csvUrl, chartId }) {
       const trendES = linearRegression(xData, esData);
       const trendSD = linearRegression(xData, sdData);
 
-      const shotColors = [
-        '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
-        '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'
-      ];
-
-      const shotTraces = shotsData.map((shotArr, i) => ({
-        x: xData,
-        y: shotArr,
-        mode: 'markers',
-        name: shotKeys[i],
-        marker: { color: shotColors[i % shotColors.length], symbol: 'x-thin-open', size: 6 },
-        yaxis: 'y1',
-        hoverinfo: 'x+y+name'
-      }));
+      const shotTraces = createShotTraces(shotKeys, shotsData, xData);
 
       const traces = [
         ...shotTraces,
@@ -240,6 +238,8 @@ function renderBallisticsChart({ csvUrl, chartId }) {
 
       layout.yaxis.range = getRange(avgData);
 
+      updateXAxisTicks(layout, xData);
+
       Plotly.newPlot(chartId, traces, layout, { displayModeBar: false });
     },
     onError: err => {
@@ -253,11 +253,9 @@ function renderCsvMarkdownTable({ csvUrl, targetId }) {
   if (!validateParams({ csvUrl, targetId }, ['csvUrl', 'targetId'])) return;
 
   function toMarkdownTable(headers, data) {
-    let md = '| ' + headers.join(' | ') + ' |\n';
-    md += '| ' + headers.map(() => '---').join(' | ') + ' |\n';
+    let md = `| ${headers.join(' | ')} |\n| ${headers.map(() => '---').join(' | ')} |\n`;
     data.forEach(row => {
-      const rowString = headers.map(h => row[h] ?? '').join(' | ');
-      md += `| ${rowString} |\n`;
+      md += `| ${headers.map(h => row[h] ?? '').join(' | ')} |\n`;
     });
     return md;
   }
@@ -265,8 +263,7 @@ function renderCsvMarkdownTable({ csvUrl, targetId }) {
   fetchCsvData({
     csvUrl,
     onSuccess: results => {
-      const headers = results.meta.fields;
-      const data = results.data;
+      const { meta: { fields: headers }, data } = results;
       const mdTable = toMarkdownTable(headers, data);
       document.getElementById(targetId).innerHTML = marked.parse(mdTable);
     },
