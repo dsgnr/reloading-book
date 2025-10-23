@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>F‑Class Target Face — Interactive Plot</title>
+  <script src="https://cdn.plot.ly/plotly-3.1.2.min.js"></script>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; margin: 18px; color:#222; }
+    h1 { font-size: 20px; margin-bottom: 12px; }
+    #controls { margin-bottom: 12px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    label { font-size:13px; color:#333; }
+    input[type="number"] { width:60px; padding:4px; margin-left:6px; }
+    #container { display:flex; gap: 20px; }
+    #target { width:760px; height:760px; }
+    table { border-collapse: collapse; font-size: 13px; }
+    th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: center; }
+    th { background: #eee; }
+    #stats { margin-top:10px; font-size:14px; color:#333; }
+    .hint { font-size:12px; color:#666; margin-top:6px; max-width: 760px; }
+    button { padding:6px 10px; }
+  </style>
+</head>
+<body>
+
+<h1>F‑Class Style Target Face — Interactive</h1>
+
+<div id="controls">
+  <label>Sighter Rounds: <input id="sighterCount" type="number" min="0" max="50" value="2"></label>
+  <label>Scored Rounds: <input id="scoredCount" type="number" min="0" max="50" value="6"></label>
+  <label><input id="labelsCheckbox" type="checkbox" checked> Show ring labels</label>
+  <button id="reloadBtn">Redraw</button>
+  <button id="randomShotsBtn">Random shots</button>
+  <button id="downloadPngBtn">Download PNG</button>
+  <button id="downloadSvgBtn">Download SVG</button>
+</div>
+
+<div id="container">
+  <div id="target"></div>
+  <div>
+    <table id="scoreTable" aria-label="Shot Scores">
+      <thead>
+        <tr><th>Shot #</th><th>Score</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div id="stats"></div>
+  </div>
+</div>
+
+<div class="hint">
+  Tip: Sighter rounds (gray) and scored rounds (red) both use standard NRA F-Class scoring rings (V=0.5 MOA radius, 5=1 MOA radius, increments of 1 MOA).
+</div>
+
+<script>
+// ===== F-Class Target Configuration =====
+const RINGS_MOA = [0.5, 1, 2, 3, 4, 5];
+const RING_LABELS = ['V', '5', '4', '3', '2', '1'];
+const RING_COLORS = [
+  'rgba(0,0,0,0.45)',
+  'rgba(0,0,0,0.3)',
+  'rgba(255,255,255,0.7)',
+  'rgba(0,0,0,0.3)',
+  'rgba(255,255,255,0.7)',
+  'rgba(0,0,0,0.3)'
+];
+
+// ===== Utility Functions =====
+function distance(x, y) {
+  return Math.sqrt(x * x + y * y);
+}
+
+function generateRandomShots(count) {
+  const maxRadius = RINGS_MOA[RINGS_MOA.length - 1] * 1.5;
+  const newShots = [];
+  for (let i = 0; i < count; i++) {
+    const angle = Math.random() * 2 * Math.PI;
+    const radius = Math.random() * maxRadius;
+    newShots.push({
+      x: radius * Math.cos(angle),
+      y: radius * Math.sin(angle)
+    });
+  }
+  return newShots;
+}
+
+function scoreFromRadius(r) {
+  for (let i = 0; i < RINGS_MOA.length; i++) {
+    if (r <= RINGS_MOA[i]) return RING_LABELS[i];
+  }
+  return 'MISS';
+}
+
+// ===== Main Draw Function =====
+function drawTarget(showLabels = true) {
+  const sighterCount = parseInt(document.getElementById('sighterCount').value) || 0;
+  const scoredCount = parseInt(document.getElementById('scoredCount').value) || 0;
+  const totalCount = sighterCount + scoredCount;
+
+  // Ensure we have enough shots
+  if (shots.length < totalCount) {
+    shots = generateRandomShots(totalCount);
+  }
+
+  // Split sighters and scored shots
+  const sighterShots = shots.slice(0, sighterCount);
+  const scoredShots = shots.slice(sighterCount, sighterCount + scoredCount);
+
+  // Determine maximum display radius
+  const allShots = [...sighterShots, ...scoredShots];
+  const furthestShot = allShots.length > 0 ? Math.max(...allShots.map(s => distance(s.x, s.y))) : 0;
+  const maxRadius = Math.max(furthestShot * 1.1, RINGS_MOA[RINGS_MOA.length - 1] * 1.05);
+
+  // ===== Build Shapes (Rings + Grid) =====
+  const shapes = [];
+
+  // Target rings
+  for (let i = RINGS_MOA.length - 1; i >= 0; i--) {
+    const r = RINGS_MOA[i];
+    shapes.push({
+      type: 'circle',
+      xref: 'x',
+      yref: 'y',
+      x0: -r,
+      y0: -r,
+      x1: r,
+      y1: r,
+      line: { color: '#222', width: i === RINGS_MOA.length - 1 ? 1 : 0.6 },
+      fillcolor: RING_COLORS[i],
+      layer: 'below'
+    });
+  }
+
+  // Ring outlines
+  RINGS_MOA.forEach(r => {
+    shapes.push({
+      type: 'circle',
+      xref: 'x',
+      yref: 'y',
+      x0: -r, y0: -r, x1: r, y1: r,
+      line: { color: '#666', width: 0.5 },
+      fillcolor: 'rgba(0,0,0,0)',
+      layer: 'above'
+    });
+  });
+
+  // Grid lines every 0.5 MOA
+  for (let g = 0.5; g <= maxRadius; g += 0.5) {
+    const gridLine = { color: '#ddd', width: 0.3 };
+    shapes.push({ type: 'line', xref: 'x', yref: 'y', x0: g, y0: -maxRadius, x1: g, y1: maxRadius, line: gridLine, layer: 'below' });
+    shapes.push({ type: 'line', xref: 'x', yref: 'y', x0: -g, y0: -maxRadius, x1: -g, y1: maxRadius, line: gridLine, layer: 'below' });
+    shapes.push({ type: 'line', xref: 'x', yref: 'y', x0: -maxRadius, y0: g, x1: maxRadius, y1: g, line: gridLine, layer: 'below' });
+    shapes.push({ type: 'line', xref: 'x', yref: 'y', x0: -maxRadius, y0: -g, x1: maxRadius, y1: -g, line: gridLine, layer: 'below' });
+  }
+
+  // ===== Ring Labels =====
+  const annotations = [];
+  if (showLabels) {
+    for (let i = 0; i < RINGS_MOA.length; i++) {
+      const rOuter = RINGS_MOA[i];
+      const rInner = (i === 0) ? 0 : RINGS_MOA[i - 1];
+      const rLabel = (rOuter + rInner) / 2;
+      annotations.push({
+        x: -rLabel + 0.02,
+        y: 0,
+        text: RING_LABELS[i],
+        showarrow: false,
+        font: { size: 14, color: '#111' },
+        xanchor: 'right',
+        yanchor: 'middle'
+      });
+    }
+  }
+
+  // ===== Plot Data =====
+  const scoredTrace = {
+    x: scoredShots.map(s => s.x),
+    y: scoredShots.map(s => s.y),
+    mode: 'markers+text',
+    type: 'scatter',
+    name: 'Scored Shots',
+    text: scoredShots.map(s => scoreFromRadius(distance(s.x, s.y))),
+    textposition: 'middle center',
+    marker: {
+      color: scoredShots.map(s => distance(s.x, s.y) <= RINGS_MOA.at(-1) ? '#cc0000' : '#770000'),
+      size: 14,
+      line: { color: '#222', width: 1.5 },
+      symbol: 'circle'
+    }
+  };
+
+  const sighterTrace = {
+    x: sighterShots.map(s => s.x),
+    y: sighterShots.map(s => s.y),
+    mode: 'markers+text',
+    type: 'scatter',
+    name: 'Sighter Shots',
+    text: sighterShots.map(s => scoreFromRadius(distance(s.x, s.y))),
+    textposition: 'middle center',
+    marker: {
+      color: 'gray',
+      size: 10,
+      line: { color: '#444', width: 1 },
+      symbol: 'circle'
+    }
+  };
+
+  // ===== Layout =====
+  const layout = {
+    shapes,
+    annotations,
+    xaxis: {
+      range: [-maxRadius, maxRadius],
+      scaleanchor: 'y',
+      scaleratio: 1,
+      constrain: 'domain',
+      showticklabels: false,
+      showgrid: false,
+      zeroline: false,
+      fixedrange: true
+    },
+    yaxis: {
+      range: [-maxRadius, maxRadius],
+      scaleanchor: 'x',
+      scaleratio: 1,
+      constrain: 'domain',
+      showticklabels: false,
+      showgrid: false,
+      zeroline: false,
+      fixedrange: true
+    },
+    margin: { t: 10, b: 10, l: 10, r: 10 },
+    showlegend: true,
+    legend: { x: 0.02, y: 0.98 },
+    width: 760,
+    height: 760,
+    plot_bgcolor: '#fff'
+  };
+
+  // ===== Render Plot =====
+  Plotly.newPlot('target', [scoredTrace, sighterTrace], layout, { responsive: true });
+
+  // ===== Update Score Table =====
+  const tableBody = document.querySelector('#scoreTable tbody');
+  tableBody.innerHTML = '';
+
+  sighterShots.forEach((s, i) => {
+    const score = scoreFromRadius(distance(s.x, s.y));
+    tableBody.innerHTML += `<tr style="color:#666"><td>S${i + 1}</td><td>${score}</td></tr>`;
+  });
+
+  scoredShots.forEach((s, i) => {
+    const score = scoreFromRadius(distance(s.x, s.y));
+    tableBody.innerHTML += `<tr><td>${i + 1}</td><td>${score}</td></tr>`;
+  });
+
+  // ===== Update Stats =====
+  document.getElementById('stats').innerHTML = `
+    Total shots: ${totalCount} (Sighters: ${sighterCount}, Scored: ${scoredCount})
+  `;
+}
+
+// ===== Initialization and Event Handlers =====
+let shots = [
+  {x: 0.1, y: -0.2},
+  {x: -0.3, y: 0.1},
+  {x: 1.1, y: 0.8},
+  {x: -2.5, y: -0.5},
+  {x: 3.2, y: 1.2},
+  {x: -4.1, y: -0.9},
+  {x: 0.05, y: 0.1},
+  {x: -0.05, y: 0.05},
+];
+
+drawTarget(true);
+
+document.getElementById('reloadBtn').addEventListener('click', () =>
+  drawTarget(document.getElementById('labelsCheckbox').checked)
+);
+
+document.getElementById('randomShotsBtn').addEventListener('click', () => {
+  const sighters = parseInt(document.getElementById('sighterCount').value) || 0;
+  const scored = parseInt(document.getElementById('scoredCount').value) || 0;
+  shots = generateRandomShots(sighters + scored);
+  drawTarget(document.getElementById('labelsCheckbox').checked);
+});
+
+document.getElementById('labelsCheckbox').addEventListener('change', e =>
+  drawTarget(e.target.checked)
+);
+
+document.getElementById('downloadPngBtn').addEventListener('click', () =>
+  Plotly.downloadImage('target', { format: 'png', filename: 'fclass_target' })
+);
+
+document.getElementById('downloadSvgBtn').addEventListener('click', () =>
+  Plotly.downloadImage('target', { format: 'svg', filename: 'fclass_target' })
+);
+</script>
+
+</body>
+</html>
