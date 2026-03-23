@@ -166,3 +166,57 @@ No pressure signs were observed during this testing. Looks like the rounds sped 
 44.1gr had a good elevation spread if we ignore shot 4. Many things could have caused this flyer, so I can't ignore it. This is my first time resizing brass in my reloading journey, so there are a lot of variables that could affect this.
 
 ![](../static/img/200_20_shotview_once_fired_44_1.png)
+
+
+### Pointing comparison
+
+Wanted to see if pointing the 200.20X bullets would make a noticeable difference to vertical spread. The theory is that reforming the meplat gives a more consistent BC across the batch, which should tighten up the vertical at distance. All shots were aimed at the same point throughout — we're only interested in the vertical spread here, not windage.
+
+#### Unpointed groups
+
+These groups were shot with bullets straight out of the box, no meplat work done. The vertical spread gives us a baseline to compare against.
+
+0.61 MOA vertical
+![](../static/img/200_20_shotview_unpointed-1.png)
+
+0.66 MOA vertical
+![](../static/img/200_20_shotview_unpointed-2.png)
+
+0.34 MOA vertical
+![](../static/img/200_20_shotview_unpointed-3.png)
+
+0.18 MOA vertical
+![](../static/img/200_20_shotview_unpointed-4.png)
+
+#### Pointed groups
+
+Same load, same aim point, but with pointed bullets. Looking at the vertical spread compared to the unpointed groups above.
+
+0.30 MOA vertical
+![](../static/img/200_20_shotview_pointed-1.png)
+
+0.17 MOA vertical
+![](../static/img/200_20_shotview_pointed-2.png)
+
+0.51 MOA vertical
+![](../static/img/200_20_shotview_pointed-3.png)
+
+0.45 MOA vertical
+![](../static/img/200_20_shotview_pointed-4.png)
+
+0.41 MOA vertical
+![](../static/img/200_20_shotview_pointed-5.png)
+
+#### Statistical comparison
+
+|                          | **Unpointed** | **Pointed** |
+|--------------------------|---------------|-------------|
+| **Groups**               | 4             | 5           |
+| **Mean vertical (MOA)**  | 0.448         | 0.368       |
+| **SD (MOA)**             | 0.215         | 0.128       |
+| **Min (MOA)**            | 0.18          | 0.17        |
+| **Max (MOA)**            | 0.66          | 0.51        |
+
+Pointing reduced the average vertical spread by roughly 18%, from 0.448 MOA down to 0.368 MOA. More notably, the standard deviation dropped significantly — 0.128 vs 0.215 — meaning the pointed groups are much more consistent. The best groups from each set are nearly identical (0.18 vs 0.17 MOA), but the unpointed set has a much wider range, with the worst group at 0.66 MOA compared to 0.51 MOA for pointed.
+
+Sample sizes are still relatively small — four unpointed vs five pointed — so this isn't conclusive yet. But the consistency improvement is encouraging enough to keep pointing as part of the prep. Will need more data to be confident, but early signs suggest it's worth the effort.
